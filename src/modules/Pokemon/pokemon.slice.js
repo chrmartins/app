@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { pokemonApi } from "../../helpers/api.helper";
+import config from "../../config";
 
 const pokemonSlice = createSlice({
   name: "pokemonSlice",
@@ -10,18 +11,24 @@ const pokemonSlice = createSlice({
     loading: {}
   },
   reducers: {
-    loadPokemon: {
+    loadPokemonList: {
       reducer(state, action) {
         if (action.status === "success") {
           state.pokemonList = action.payload.data;
         }
         state.loading.pokemonList = action.status === "pending";
       },
-      prepare: () => ({
-        payload: {
-          promise: pokemonApi.get("/pokemon")
+      prepare: url => {
+        let finalUrl = "/pokemon";
+        if (url) {
+          finalUrl = url.replace(config.pokemonApiUrl, "");
         }
-      })
+        return {
+          payload: {
+            promise: pokemonApi.get(finalUrl)
+          }
+        };
+      }
     },
     detailPokemon: {
       reducer(state, action) {

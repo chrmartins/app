@@ -17,7 +17,7 @@ const Pokemon = ({ pokemonName }) => {
 
   useEffect(() => {
     dispatch(pokemonSliceActions.detailPokemon(pokemonName));
-  }, []);
+  }, [pokemonName]);
 
   return (
     <Card>

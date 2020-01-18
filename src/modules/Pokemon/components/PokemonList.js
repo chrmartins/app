@@ -10,8 +10,16 @@ const PokemonList = () => {
   const { pokemonList } = useSelector(state => state.pokemonSlice);
 
   useEffect(() => {
-    dispatch(pokemonSliceActions.loadPokemon());
+    dispatch(pokemonSliceActions.loadPokemonList(null));
   }, []);
+
+  const next = () => {
+    dispatch(pokemonSliceActions.loadPokemonList(pokemonList.next));
+  };
+
+  const previous = () => {
+    dispatch(pokemonSliceActions.loadPokemonList(pokemonList.previous));
+  };
 
   if (!pokemonList) {
     return <LinearProgress />;
@@ -20,14 +28,17 @@ const PokemonList = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
+        {pokemonList.previous && (
+          <Button variant="contained" color="primary" onClick={previous}>
+            Anterior
+          </Button>
+        )}
         Total {pokemonList.total}
-        <Button
-          variant="contained"
-          color="primary"
-          // onClick={() => requestPokemons(data.next)}
-        >
-          Próximos <ArrowForward />
-        </Button>
+        {pokemonList.next && (
+          <Button variant="contained" color="primary" onClick={next}>
+            Próximos <ArrowForward />
+          </Button>
+        )}
       </Grid>
       {pokemonList.results &&
         pokemonList.results.map((pokemon, key) => (
