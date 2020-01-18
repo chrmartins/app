@@ -5,6 +5,8 @@ const pokemonSlice = createSlice({
   name: "pokemonSlice",
   initialState: {
     pokemonList: [],
+    pokemonDetail: {},
+    // pokemonDetail: [],
     loading: {}
   },
   reducers: {
@@ -18,6 +20,21 @@ const pokemonSlice = createSlice({
       prepare: () => ({
         payload: {
           promise: pokemonApi.get("/pokemon")
+        }
+      })
+    },
+    detailPokemon: {
+      reducer(state, action) {
+        if (action.status === "success") {
+          state.pokemonDetail[action.name] = action.payload.data;
+          // state.pokemonDetail.push(action.payload.data) ;
+        }
+        state.loading.pokemonDetail = action.status === "pending";
+      },
+      prepare: name => ({
+        payload: {
+          promise: pokemonApi.get(`/pokemon/${name}`),
+          name
         }
       })
     }
