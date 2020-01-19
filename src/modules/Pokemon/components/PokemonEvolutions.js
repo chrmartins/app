@@ -9,15 +9,14 @@ const PokemonEvolutions = ({ pokemonName }) => {
   const dispatch = useDispatch();
   const { evolutionDetail } = useSelector(state => state.pokemonSlice);
   const evolution = evolutionDetail[pokemonName];
-  console.log("evolution", evolution);
 
   const createEvolutions = evolves_to => {
-    return evolves_to.map((evolution, key) => (
-      <Fragment key={key}>
-        <PokemonCard pokemonName={evolution.species.name} />
-        {evolution.evolves_to && createEvolutions(evolution.evolves_to)}
+    return evolution ? (
+      <Fragment>
+        <PokemonCard pokemonName={evolves_to.name} />
+        {evolves_to.evolves_to && createEvolutions(evolves_to.evolves_to)}
       </Fragment>
-    ));
+    ) : null;
   };
 
   return (
@@ -28,7 +27,7 @@ const PokemonEvolutions = ({ pokemonName }) => {
       {evolution ? (
         <Grid item xs={12}>
           {evolution ? (
-            createEvolutions(evolution.chain.evolves_to)
+            createEvolutions(evolution.evolves_to)
           ) : (
             <LinearProgress />
           )}

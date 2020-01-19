@@ -47,9 +47,19 @@ const pokemonSlice = createSlice({
     },
     loadEvolutionDetail: {
       reducer(state, action) {
+        const mountEvolutions = item => {
+          return {
+            name: item.species.name,
+            evolves_to: item.evolves_to[0]
+              ? mountEvolutions(item.evolves_to[0])
+              : null
+          };
+        };
         if (action.status === "success") {
           const evolution = action.payload.data;
-          state.evolutionDetail[evolution.chain.species.name] = evolution;
+          state.evolutionDetail[evolution.chain.species.name] = mountEvolutions(
+            evolution.chain
+          );
         }
         state.loading.evolutionDetail = action.status === "pending";
       },
