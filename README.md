@@ -16,5 +16,5 @@ Lista de pokemons
 - [x] O detalhamento do Pokemon dever poder ser compartilhado por URL
 - [ ] Listagem de berries com filtro por sabor
 - [ ] Deixar layout mais Clean
-- [ ] Filtrar na lista de pokemon por nome
+- [x] Filtrar na lista de pokemon por nome
 - [ ] Criar estrutura de menu e cabeçalho

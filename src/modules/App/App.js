@@ -4,6 +4,7 @@ import { Grid } from "@material-ui/core";
 import AppRouter from "./App.router";
 import { Router } from "react-router-dom";
 import config from "../../config";
+import AppLayout from "./components/AppLayout";
 
 const browserHistoryConfig = { basename: config.basename };
 
@@ -12,11 +13,9 @@ const history = createBrowserHistory(browserHistoryConfig);
 const App = () => {
   return (
     <Router basename={config.basename} history={history}>
-      <Grid container>
-        <Grid item xs={12}>
-          <AppRouter />
-        </Grid>
-      </Grid>
+      <AppLayout>
+        <AppRouter />
+      </AppLayout>
     </Router>
   );
 };

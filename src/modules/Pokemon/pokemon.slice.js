@@ -14,12 +14,12 @@ const pokemonSlice = createSlice({
     loadPokemonList: {
       reducer(state, action) {
         if (action.status === "success") {
-          state.pokemonList = action.payload.data;
+          state.pokemonList = action.payload.data.results;
         }
         state.loading.pokemonList = action.status === "pending";
       },
       prepare: url => {
-        let finalUrl = "/pokemon";
+        let finalUrl = "/pokemon?limit=9999";
         if (url) {
           finalUrl = url.replace(config.pokemonApiUrl, "");
         }

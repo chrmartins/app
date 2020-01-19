@@ -7,12 +7,19 @@ import {
   KeyboardArrowRight
 } from "@material-ui/icons";
 
-const PaginationComponent = ({ totalPages, page, handleNext, handleBack }) => {
+const PaginationComponent = ({
+  totalPages,
+  page,
+  handleNext,
+  handleBack,
+  variant
+}) => {
+  const totalPagesRounded = Math.round(totalPages);
   return (
     <Grid item xs={12}>
       <MobileStepper
-        variant="progress"
-        steps={totalPages}
+        variant={variant || "text"}
+        steps={totalPagesRounded}
         position="static"
         activeStep={page}
         nextButton={
@@ -21,14 +28,14 @@ const PaginationComponent = ({ totalPages, page, handleNext, handleBack }) => {
             onClick={handleNext}
             disabled={page === totalPages}
           >
-            Next
+            Próximo
             <KeyboardArrowRight />
           </Button>
         }
         backButton={
           <Button size="small" onClick={handleBack} disabled={page === 0}>
             <KeyboardArrowLeft />
-            Back
+            Anterior
           </Button>
         }
       />

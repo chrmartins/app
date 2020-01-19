@@ -7,9 +7,6 @@ const PokemonPage = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        Pokemon
-      </Grid>
-      <Grid item xs={12}>
         <PokemonList />
       </Grid>
     </Grid>
