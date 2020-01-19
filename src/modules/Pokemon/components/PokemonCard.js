@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Grid,
   Card,
   CardHeader,
   Avatar,
   CardActions,
   LinearProgress,
   Button,
-  Typography
+  CardContent
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { pokemonSliceActions } from "../pokemon.slice";
 import { pokemonUrls } from "../Pokemon.router";
+import Pokemon from "./Pokemon";
 
 const useStyles = makeStyles(theme => ({
   linkItem: {
@@ -24,30 +24,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Pokemon = ({ pokemonName }) => {
+const PokemonCard = ({ pokemonName }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { pokemonDetail } = useSelector(state => state.pokemonSlice);
-  const pokemon = pokemonDetail[pokemonName];
-
-  useEffect(() => {
-    dispatch(pokemonSliceActions.detailPokemon(pokemonName));
-  }, [pokemonName]);
-
-  if (!pokemon) {
-    return <LinearProgress />;
-  }
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h6">{pokemon.name}</Typography>
-      </Grid>
-      <Grid item xs={12} style={{ textAlign: "center" }}>
-        <img src={pokemon.sprites.front_default} />
-      </Grid>
-    </Grid>
+    <Card className={classes.cardBackground}>
+      <CardContent>
+        <Pokemon pokemonName={pokemonName} />
+      </CardContent>
+      <CardActions>
+        <Link
+          className={classes.linkItem}
+          to={pokemonUrls.PokemonDetail.path.replace(
+            ":pokemonName",
+            pokemonName
+          )}
+        >
+          <Button variant="contained" color="secondary">
+            Detalhar
+          </Button>
+        </Link>
+      </CardActions>
+    </Card>
   );
 };
 
-export default Pokemon;
+export default PokemonCard;

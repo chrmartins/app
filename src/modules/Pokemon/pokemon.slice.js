@@ -7,7 +7,7 @@ const pokemonSlice = createSlice({
   initialState: {
     pokemonList: [],
     pokemonDetail: {},
-    // pokemonDetail: [],
+    evolutionDetail: {},
     loading: {}
   },
   reducers: {
@@ -34,7 +34,6 @@ const pokemonSlice = createSlice({
       reducer(state, action) {
         if (action.status === "success") {
           state.pokemonDetail[action.name] = action.payload.data;
-          // state.pokemonDetail.push(action.payload.data) ;
         }
         state.loading.pokemonDetail = action.status === "pending";
       },
@@ -42,6 +41,20 @@ const pokemonSlice = createSlice({
         payload: {
           promise: pokemonApi.get(`/pokemon/${name}`),
           name
+        }
+      })
+    },
+    detailEvolution: {
+      reducer(state, action) {
+        if (action.status === "success") {
+          state.evolutionDetail[action.id] = action.payload.data;
+        }
+        state.loading.evolutionDetail = action.status === "pending";
+      },
+      prepare: id => ({
+        payload: {
+          promise: pokemonApi.get(`/evolution-chain/${id}`),
+          id
         }
       })
     }

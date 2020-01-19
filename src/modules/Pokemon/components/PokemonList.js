@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Pokemon from "./Pokemon";
+import PokemonCard from "./PokemonCard";
 import { Grid, Button, LinearProgress } from "@material-ui/core";
-import ArrowForward from "@material-ui/icons/ArrowForward";
+import { ArrowForward, ArrowBack } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
 
@@ -30,7 +30,7 @@ const PokemonList = () => {
       <Grid item xs={12}>
         {pokemonList.previous && (
           <Button variant="contained" color="primary" onClick={previous}>
-            Anterior
+            <ArrowBack /> Anterior
           </Button>
         )}
         Total {pokemonList.total}
@@ -43,7 +43,7 @@ const PokemonList = () => {
       {pokemonList.results &&
         pokemonList.results.map((pokemon, key) => (
           <Grid key={key} item xs={12} sm={6} md={3}>
-            <Pokemon pokemonName={pokemon.name} />
+            <PokemonCard pokemonName={pokemon.name} />
           </Grid>
         ))}
     </Grid>

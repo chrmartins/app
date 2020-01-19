@@ -13,7 +13,7 @@ export const pokemonUrls = {
     exact: true
   },
   PokemonDetail: {
-    path: `${ROUTE_PREFIX}/detail`,
+    path: `${ROUTE_PREFIX}/detail/:pokemonName`,
     component: PokemonDetailPage,
     exact: true
   }
