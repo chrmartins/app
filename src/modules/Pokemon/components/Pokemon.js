@@ -4,12 +4,26 @@ import {
   Card,
   CardHeader,
   Avatar,
-  CardContent,
-  LinearProgress
+  CardActions,
+  LinearProgress,
+  Button
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import { pokemonSliceActions } from "../pokemon.slice";
+import { pokemonUrls } from "../Pokemon.router";
+
+const useStyles = makeStyles(theme => ({
+  linkItem: {
+    textDecoration: "none"
+  },
+  cardBackground: {
+    backgroundColor: theme.palette.primary.light
+  }
+}));
 
 const Pokemon = ({ pokemonName }) => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const { pokemonDetail } = useSelector(state => state.pokemonSlice);
   const pokemon = pokemonDetail[pokemonName];
@@ -20,7 +34,7 @@ const Pokemon = ({ pokemonName }) => {
   }, [pokemonName]);
 
   return (
-    <Card>
+    <Card className={classes.cardBackground}>
       {pokemon ? (
         <CardHeader
           avatar={<Avatar src={pokemon.sprites.front_default} />}
@@ -29,7 +43,13 @@ const Pokemon = ({ pokemonName }) => {
       ) : (
         <LinearProgress />
       )}
-      <CardContent>Aqui vai os detalhes</CardContent>
+      <CardActions>
+        <Link className={classes.linkItem} to={pokemonUrls.PokemonDetail.path}>
+          <Button variant="contained" color="secondary">
+            Detalhar
+          </Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 };

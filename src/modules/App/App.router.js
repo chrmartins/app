@@ -1,13 +1,18 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import routeHelper from "../../helpers/Route.helper";
-import App from "./App";
+import PokemonRouter from "../Pokemon/Pokemon.router";
 
 export const appUrls = {
-  App: {
+  PokemonPage: {
     path: "/",
-    component: () => App,
+    component: () => <Redirect to={"/pokemon"} />,
     exact: true
+  },
+  PokemonDetail: {
+    path: "/pokemon",
+    component: PokemonRouter,
+    exact: false
   }
 };
 

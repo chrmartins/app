@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserHistory } from "history";
 import { Grid } from "@material-ui/core";
-import PokemonPage from "../Pokemon/PokemonPage";
+import AppRouter from "./App.router";
 import { Router } from "react-router-dom";
 import config from "../../config";
 
@@ -14,7 +14,7 @@ const App = () => {
     <Router basename={config.basename} history={history}>
       <Grid container>
         <Grid item xs={12}>
-          <PokemonPage />
+          <AppRouter />
         </Grid>
       </Grid>
     </Router>
