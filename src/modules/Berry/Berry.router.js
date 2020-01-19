@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import routeHelper from "../../helpers/Route.helper";
 import BerryPage from "./BerryPage";
+import BerryProvider from "./BerryProvider";
 
 const ROUTE_PREFIX = "/berry";
 
@@ -13,5 +14,13 @@ const berryUrls = {
   }
 };
 
-export default () => routeHelper({ urls: berryUrls, withSwitch: true });
+const BerryRouter = () => {
+  return (
+    <BerryProvider>
+      {routeHelper({ urls: berryUrls, withSwitch: true })}
+    </BerryProvider>
+  );
+};
+
+export default BerryRouter;
 export { berryUrls };

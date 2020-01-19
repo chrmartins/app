@@ -28,6 +28,7 @@ import { pokemonSliceActions } from "../pokemon.slice";
 import { POKEMON_ID_BY_NAME } from "../pokemon.constant";
 import PaginationComponent from "../../../components/PaginationComponent";
 import TitleComponent from "../../../components/TitleComponent";
+import SearchComponent from "../../../components/SearchComponent";
 
 const PokemonList = () => {
   const dispatch = useDispatch();
@@ -72,22 +73,11 @@ const PokemonList = () => {
       <Grid item xs={12}>
         <Grid container justify="center">
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel variant="standard" htmlFor="search-pokemon">
-                Buscar Pokemon
-              </InputLabel>
-              <Input
-                id="search-pokemon"
-                fullWidth
-                value={searchText}
-                onChange={handleOnChange}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <Search />
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
+            <SearchComponent
+              label="Buscar Pokemon"
+              value={searchText}
+              onChange={handleOnChange}
+            />
           </Grid>
         </Grid>
       </Grid>
