@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import "typeface-roboto";
 import "./index.css";
-import App from "./App";
+import App from "./modules/App/App";
 import storeHelper from "./store/store.helper";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import customTheme from "./constants/customTheme";
+import customTheme from "./constants/customTheme.constant";
 
 const theme = createMuiTheme(customTheme);
 
