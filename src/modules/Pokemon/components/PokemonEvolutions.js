@@ -4,21 +4,12 @@ import { Grid, Button, LinearProgress } from "@material-ui/core";
 import { ArrowForward, ArrowBack } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
-import { POKEMON_ID_BY_NAME } from "../pokemon.constant";
 
 const PokemonEvolutions = ({ pokemonName }) => {
-  const pokemonId = POKEMON_ID_BY_NAME[pokemonName]
-    ? POKEMON_ID_BY_NAME[pokemonName].id
-    : null;
   const dispatch = useDispatch();
   const { evolutionDetail } = useSelector(state => state.pokemonSlice);
-  const evolution = evolutionDetail[pokemonId];
-
-  useEffect(() => {
-    if (pokemonId) {
-      dispatch(pokemonSliceActions.detailEvolution(pokemonId));
-    }
-  }, [pokemonId]);
+  const evolution = evolutionDetail[pokemonName];
+  console.log("evolution", evolution);
 
   const createEvolutions = evolves_to => {
     return evolves_to.map((evolution, key) => (
@@ -34,7 +25,7 @@ const PokemonEvolutions = ({ pokemonName }) => {
       <Grid item xs={12}>
         Evoluções:
       </Grid>
-      {pokemonId ? (
+      {evolution ? (
         <Grid item xs={12}>
           {evolution ? (
             createEvolutions(evolution.chain.evolves_to)

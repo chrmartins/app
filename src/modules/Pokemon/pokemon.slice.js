@@ -8,6 +8,7 @@ const pokemonSlice = createSlice({
     pokemonList: [],
     pokemonDetail: {},
     evolutionDetail: {},
+    evolutionList: null,
     loading: {}
   },
   reducers: {
@@ -30,7 +31,7 @@ const pokemonSlice = createSlice({
         };
       }
     },
-    detailPokemon: {
+    loadPokemonDetail: {
       reducer(state, action) {
         if (action.status === "success") {
           state.pokemonDetail[action.name] = action.payload.data;
@@ -44,10 +45,11 @@ const pokemonSlice = createSlice({
         }
       })
     },
-    detailEvolution: {
+    loadEvolutionDetail: {
       reducer(state, action) {
         if (action.status === "success") {
-          state.evolutionDetail[action.id] = action.payload.data;
+          const evolution = action.payload.data;
+          state.evolutionDetail[evolution.chain.species.name] = evolution;
         }
         state.loading.evolutionDetail = action.status === "pending";
       },
@@ -55,6 +57,19 @@ const pokemonSlice = createSlice({
         payload: {
           promise: pokemonApi.get(`/evolution-chain/${id}`),
           id
+        }
+      })
+    },
+    loadEvolutionList: {
+      reducer(state, action) {
+        if (action.status === "success") {
+          state.evolutionList = action.payload.data.results;
+        }
+        state.loading.evolutionList = action.status === "pending";
+      },
+      prepare: () => ({
+        payload: {
+          promise: pokemonApi.get(`/evolution-chain?limit=9999`)
         }
       })
     }

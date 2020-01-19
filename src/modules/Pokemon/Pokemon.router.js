@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import routeHelper from "../../helpers/Route.helper";
 import PokemonPage from "../Pokemon/PokemonPage";
 import PokemonDetailPage from "./PokemonDetailPage";
+import PokemonProvider from "./PokemonProvider";
 
 const ROUTE_PREFIX = "/pokemon";
 
@@ -19,5 +20,13 @@ const pokemonUrls = {
   }
 };
 
-export default () => routeHelper({ urls: pokemonUrls, withSwitch: true });
+const PokemonRouter = () => {
+  return (
+    <PokemonProvider>
+      {routeHelper({ urls: pokemonUrls, withSwitch: true })}
+    </PokemonProvider>
+  );
+};
+
+export default PokemonRouter;
 export { pokemonUrls };

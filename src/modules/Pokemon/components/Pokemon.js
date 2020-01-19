@@ -31,7 +31,7 @@ const Pokemon = ({ pokemonName }) => {
   const pokemon = pokemonDetail[pokemonName];
 
   useEffect(() => {
-    dispatch(pokemonSliceActions.detailPokemon(pokemonName));
+    dispatch(pokemonSliceActions.loadPokemonDetail(pokemonName));
   }, [pokemonName]);
 
   if (!pokemon) {

@@ -13,7 +13,7 @@ const PokemonDetailPage = () => {
   const pokemon = pokemonDetail[pokemonName];
 
   useEffect(() => {
-    dispatch(pokemonSliceActions.detailPokemon(pokemonName));
+    dispatch(pokemonSliceActions.loadPokemonDetail(pokemonName));
   }, [pokemonName]);
 
   return (

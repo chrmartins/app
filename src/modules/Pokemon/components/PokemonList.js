@@ -25,14 +25,12 @@ import {
 } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
-import { POKEMON_ID_BY_NAME } from "../pokemon.constant";
 import PaginationComponent from "../../../components/PaginationComponent";
 import TitleComponent from "../../../components/TitleComponent";
 import SearchComponent from "../../../components/SearchComponent";
 
 const PokemonList = () => {
   const dispatch = useDispatch();
-  // const pokemonList = Object.values(POKEMON_ID_BY_NAME);
   const { pokemonList } = useSelector(state => state.pokemonSlice);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(0);
