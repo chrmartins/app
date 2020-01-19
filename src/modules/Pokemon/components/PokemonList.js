@@ -1,51 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
-import { Grid, Button, LinearProgress } from "@material-ui/core";
-import { ArrowForward, ArrowBack } from "@material-ui/icons";
+import { Grid, Button, LinearProgress, MobileStepper } from "@material-ui/core";
+import {
+  ArrowForward,
+  ArrowBack,
+  KeyboardArrowLeft,
+  KeyboardArrowRight
+} from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
+import { POKEMON_ID_BY_NAME } from "../pokemon.constant";
+import PaginationComponent from "../../../components/PaginationComponent";
 
 const PokemonList = () => {
-  const dispatch = useDispatch();
-  const { pokemonList } = useSelector(state => state.pokemonSlice);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(12);
+  const pokemonList = Object.values(POKEMON_ID_BY_NAME);
+  const totalPages = pokemonList.length / limit;
 
-  useEffect(() => {
-    dispatch(pokemonSliceActions.loadPokemonList(null));
-  }, []);
+  const pokemonListPaginated = pokemonList.slice(page, page + limit);
 
-  const next = () => {
-    dispatch(pokemonSliceActions.loadPokemonList(pokemonList.next));
+  const handleNext = () => {
+    setPage(page + 1);
   };
 
-  const previous = () => {
-    dispatch(pokemonSliceActions.loadPokemonList(pokemonList.previous));
+  const handleBack = () => {
+    setPage(page - 1);
   };
-
-  if (!pokemonList) {
-    return <LinearProgress />;
-  }
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        {pokemonList.previous && (
-          <Button variant="contained" color="primary" onClick={previous}>
-            <ArrowBack /> Anterior
-          </Button>
-        )}
-        Total {pokemonList.total}
-        {pokemonList.next && (
-          <Button variant="contained" color="primary" onClick={next}>
-            Próximos <ArrowForward />
-          </Button>
-        )}
+        Busca
       </Grid>
-      {pokemonList.results &&
-        pokemonList.results.map((pokemon, key) => (
-          <Grid key={key} item xs={12} sm={6} md={3}>
-            <PokemonCard pokemonName={pokemon.name} />
-          </Grid>
-        ))}
+      <PaginationComponent
+        totalPages={totalPages}
+        page={page}
+        handleNext={handleNext}
+        handleBack={handleBack}
+      />
+      {pokemonListPaginated.map((pokemon, key) => (
+        <Grid key={key} item xs={12} sm={6} md={3}>
+          <PokemonCard pokemonName={pokemon.name} />
+        </Grid>
+      ))}
+      <PaginationComponent
+        totalPages={totalPages}
+        page={page}
+        handleNext={handleNext}
+        handleBack={handleBack}
+      />
     </Grid>
   );
 };
