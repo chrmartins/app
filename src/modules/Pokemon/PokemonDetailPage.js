@@ -23,7 +23,7 @@ const PokemonDetailPage = () => {
       </Grid>
       <Grid item xs={12}>
         {pokemon ? (
-          <PokemonEvolutions pokemonId={pokemon.id} />
+          <PokemonEvolutions pokemonName={pokemonName} />
         ) : (
           <LinearProgress />
         )}

@@ -1,6 +1,7 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, LinearProgress } from "@material-ui/core";
 import PokemonList from "./components/PokemonList";
+import { useDispatch, useSelector } from "react-redux";
 
 const PokemonPage = () => {
   return (
