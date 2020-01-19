@@ -6,7 +6,7 @@ import PokemonDetailPage from "./PokemonDetailPage";
 
 const ROUTE_PREFIX = "/pokemon";
 
-export const pokemonUrls = {
+const pokemonUrls = {
   PokemonPage: {
     path: ROUTE_PREFIX,
     component: PokemonPage,
@@ -20,3 +20,4 @@ export const pokemonUrls = {
 };
 
 export default () => routeHelper({ urls: pokemonUrls, withSwitch: true });
+export { pokemonUrls };
