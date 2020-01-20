@@ -52,7 +52,9 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    backgroundColor: "#f44336",
+    color: "#fff"
   },
   drawerHeader: {
     display: "flex",
@@ -140,7 +142,7 @@ const AppLayout = ({ children }) => {
           </IconButton>
         </div>
         <Divider />
-        <AppMenu />
+        <AppMenu onClick={handleDrawerClose} />
       </Drawer>
       <main
         className={clsx(classes.content, {

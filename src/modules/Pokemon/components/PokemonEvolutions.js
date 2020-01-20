@@ -12,10 +12,12 @@ const PokemonEvolutions = ({ pokemonName }) => {
 
   const createEvolutions = evolves_to => {
     return evolves_to && evolution ? (
-      <Fragment>
-        <PokemonCard pokemonName={evolves_to.name} />
+      <>
+        <Grid item xs={12} md={4}>
+          <PokemonCard pokemonName={evolves_to.name} />
+        </Grid>
         {evolves_to.evolves_to && createEvolutions(evolves_to.evolves_to)}
-      </Fragment>
+      </>
     ) : (
       <Typography>Não evolui</Typography>
     );
@@ -24,14 +26,16 @@ const PokemonEvolutions = ({ pokemonName }) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        Evoluções:
+        <Typography variant="h5">Evoluções</Typography>
       </Grid>
       <Grid item xs={12}>
-        {evolution ? (
-          createEvolutions(evolution.evolves_to)
-        ) : (
-          <LinearProgress />
-        )}
+        <Grid container justify="center" spacing={1}>
+          {evolution ? (
+            createEvolutions(evolution.evolves_to)
+          ) : (
+            <LinearProgress />
+          )}
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  Grid,
   Card,
   CardHeader,
   Avatar,
@@ -19,33 +20,40 @@ const useStyles = makeStyles(theme => ({
   linkItem: {
     textDecoration: "none"
   },
-  cardBackground: {
-    backgroundColor: theme.palette.primary.light
+  card: {
+    backgroundColor: theme.palette.primary.light,
+    color: "#fff"
   }
 }));
 
-const PokemonCard = ({ pokemonName }) => {
+const PokemonCard = ({ pokemonName, showActions = true, children }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   return (
-    <Card className={classes.cardBackground}>
+    <Card className={classes.card}>
       <CardContent>
-        <Pokemon pokemonName={pokemonName} />
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Pokemon pokemonName={pokemonName} />
+          </Grid>
+          <Grid item xs={12}>
+            {children}
+          </Grid>
+        </Grid>
       </CardContent>
-      <CardActions>
-        <Link
-          className={classes.linkItem}
-          to={pokemonUrls.PokemonDetail.path.replace(
-            ":pokemonName",
-            pokemonName
-          )}
-        >
-          <Button variant="contained" color="secondary">
-            Detalhar
-          </Button>
-        </Link>
-      </CardActions>
+      {showActions && (
+        <CardActions style={{ textAlign: "center" }}>
+          <Link
+            className={classes.linkItem}
+            to={pokemonUrls.PokemonDetail.path.replace(
+              ":pokemonName",
+              pokemonName
+            )}
+          >
+            <Button color="secondary">Detalhar</Button>
+          </Link>
+        </CardActions>
+      )}
     </Card>
   );
 };

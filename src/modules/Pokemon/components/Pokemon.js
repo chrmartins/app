@@ -40,8 +40,8 @@ const Pokemon = ({ pokemonName }) => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h6">{pokemon.name}</Typography>
+      <Grid item xs={12} style={{ textAlign: "center" }}>
+        <Typography variant="h5">{pokemon.name}</Typography>
       </Grid>
       <Grid item xs={12} style={{ textAlign: "center" }}>
         <img src={pokemon.sprites.front_default} />

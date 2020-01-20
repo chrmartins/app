@@ -3,9 +3,9 @@ const customTheme = {
     common: { black: "#000", white: "#fff" },
     background: { paper: "#fff", default: "#fafafa" },
     primary: {
-      light: "#e57373",
-      main: "#f44336",
-      dark: "#c62828",
+      light: "#616161",
+      main: "#424242",
+      dark: "#212121",
       contrastText: "#ffffff"
     },
     secondary: {

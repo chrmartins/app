@@ -9,13 +9,23 @@ import {
   Select,
   MenuItem
 } from "@material-ui/core";
+
+import { makeStyles } from "@material-ui/styles";
 import TitleComponent from "../../../components/TitleComponent";
 import Berry from "./Berry";
 import SearchComponent from "../../../components/SearchComponent";
 
+const useStyles = makeStyles(theme => ({
+  card: {
+    backgroundColor: theme.palette.primary.light,
+    color: "#fff"
+  }
+}));
+
 const FLAVOR_DEFAULT = "selecione";
 
 const BerryList = () => {
+  const classes = useStyles();
   const [searchText, setSearchText] = useState("");
   const [flavors, setFlavors] = useState("");
   const [selectedFlavor, setSelectedFlavor] = useState(FLAVOR_DEFAULT);
@@ -110,7 +120,7 @@ const BerryList = () => {
         <Grid container spacing={2}>
           {berryListFiltered.map(berry => (
             <Grid key={berry.name} item xs={12} md={4}>
-              <Paper style={{ padding: 16 }}>
+              <Paper className={classes.card} style={{ padding: 16 }}>
                 <Berry berryName={berry.name} />
               </Paper>
             </Grid>

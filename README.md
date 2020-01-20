@@ -9,7 +9,7 @@ Lista de pokemons
 # ToDo's
 
 - [ ] Colocar alguns detalhes do pokemon nos detalhes
-- [ ] Deixar layout mais Clean
+- [x] Deixar layout mais Clean
 - [x] Listagem de berries com filtro por sabor
 - [x] Ter uma listagem de Pokemon
 - [x] Com cards que mostram nome e foto
@@ -18,3 +18,8 @@ Lista de pokemons
 - [x] O detalhamento do Pokemon dever poder ser compartilhado por URL
 - [x] Filtrar na lista de pokemon por nome
 - [x] Criar estrutura de menu e cabeçalho
+- [ ] BUG: ao iniciar o PokemonDetailPage ele faz muitos renderers
+
+# Dúvidas
+
+- [ ]

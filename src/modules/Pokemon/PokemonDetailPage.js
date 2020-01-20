@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Grid, LinearProgress } from "@material-ui/core";
+import { Grid, LinearProgress, Typography } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "./pokemon.slice";
-import Pokemon from "./components/Pokemon";
+import PokemonCard from "./components/PokemonCard";
 import PokemonEvolutions from "./components/PokemonEvolutions";
 
 const PokemonDetailPage = () => {
@@ -16,17 +16,27 @@ const PokemonDetailPage = () => {
     dispatch(pokemonSliceActions.loadPokemonDetail(pokemonName));
   }, [pokemonName]);
 
+  if (!pokemon) {
+    return <LinearProgress />;
+  }
+  console.log("!!! pokemon", pokemon);
+
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Pokemon pokemonName={pokemonName} />
+    <Grid container justify="center" spacing={1}>
+      <Grid item xs={12} md={4}>
+        <PokemonCard pokemonName={pokemonName} showActions={false}>
+          <Grid container justify="center" spacing={1}>
+            <Grid item xs={12}>
+              <Typography variant="h5" color="secondary">
+                Experiência
+              </Typography>
+              <Typography variant="body1">{pokemon.base_experience}</Typography>
+            </Grid>
+          </Grid>
+        </PokemonCard>
       </Grid>
       <Grid item xs={12}>
-        {pokemon ? (
-          <PokemonEvolutions pokemonName={pokemonName} />
-        ) : (
-          <LinearProgress />
-        )}
+        <PokemonEvolutions pokemonName={pokemonName} />
       </Grid>
     </Grid>
   );

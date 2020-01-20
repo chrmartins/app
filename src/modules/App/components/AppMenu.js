@@ -13,24 +13,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppMenu = () => {
+const AppMenu = ({ onClick }) => {
   const classes = useStyles();
   return (
     <List>
-      <Link to={pokemonUrls.PokemonPage.path} className={classes.linkItem}>
+      <Link
+        onClick={onClick}
+        to={pokemonUrls.PokemonPage.path}
+        className={classes.linkItem}
+      >
         <ListItem button>
-          <ListItemIcon>
+          {/* <ListItemIcon style={{ color: "#fff" }}>
             <Android />
-          </ListItemIcon>
-          <ListItemText primary={"Pokemons"} />
+          </ListItemIcon> */}
+          <ListItemText style={{ color: "#fff" }} primary={"Pokemons"} />
         </ListItem>
       </Link>
-      <Link to={berryUrls.BerryPage.path} className={classes.linkItem}>
+      <Link
+        onClick={onClick}
+        to={berryUrls.BerryPage.path}
+        className={classes.linkItem}
+      >
         <ListItem button>
-          <ListItemIcon>
+          {/* <ListItemIcon style={{ color: "#fff" }}>
             <Apple />
-          </ListItemIcon>
-          <ListItemText primary={"Berrys"} />
+          </ListItemIcon> */}
+          <ListItemText style={{ color: "#fff" }} primary={"Berrys"} />
         </ListItem>
       </Link>
     </List>
