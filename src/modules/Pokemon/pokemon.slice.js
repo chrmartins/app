@@ -48,11 +48,17 @@ const pokemonSlice = createSlice({
     loadEvolutionDetail: {
       reducer(state, action) {
         const mountEvolutions = item => {
+          const theEvolution = item.evolves_to[0];
+          // aproveita as evoluções do pokemon buscado para montar para os próximos
+          if (theEvolution) {
+            state.evolutionDetail[theEvolution.species.name] = mountEvolutions(
+              theEvolution
+            );
+          }
+          // monta as evoluções para o pokemon buscado
           return {
             name: item.species.name,
-            evolves_to: item.evolves_to[0]
-              ? mountEvolutions(item.evolves_to[0])
-              : null
+            evolves_to: theEvolution ? mountEvolutions(theEvolution) : null
           };
         };
         if (action.status === "success") {

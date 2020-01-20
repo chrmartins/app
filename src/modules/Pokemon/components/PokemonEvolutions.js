@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import PokemonCard from "./PokemonCard";
-import { Grid, Button, LinearProgress } from "@material-ui/core";
+import { Grid, Button, LinearProgress, Typography } from "@material-ui/core";
 import { ArrowForward, ArrowBack } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
@@ -11,12 +11,14 @@ const PokemonEvolutions = ({ pokemonName }) => {
   const evolution = evolutionDetail[pokemonName];
 
   const createEvolutions = evolves_to => {
-    return evolution ? (
+    return evolves_to && evolution ? (
       <Fragment>
         <PokemonCard pokemonName={evolves_to.name} />
         {evolves_to.evolves_to && createEvolutions(evolves_to.evolves_to)}
       </Fragment>
-    ) : null;
+    ) : (
+      <Typography>Não evolui</Typography>
+    );
   };
 
   return (
@@ -24,19 +26,13 @@ const PokemonEvolutions = ({ pokemonName }) => {
       <Grid item xs={12}>
         Evoluções:
       </Grid>
-      {evolution ? (
-        <Grid item xs={12}>
-          {evolution ? (
-            createEvolutions(evolution.evolves_to)
-          ) : (
-            <LinearProgress />
-          )}
-        </Grid>
-      ) : (
-        <Grid item xs={12}>
-          Não é possível mostrar as evoluções
-        </Grid>
-      )}
+      <Grid item xs={12}>
+        {evolution ? (
+          createEvolutions(evolution.evolves_to)
+        ) : (
+          <LinearProgress />
+        )}
+      </Grid>
     </Grid>
   );
 };
