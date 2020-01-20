@@ -2,27 +2,9 @@ import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import {
   Grid,
-  Button,
   LinearProgress,
-  MobileStepper,
-  Paper,
-  IconButton,
-  InputBase,
-  TextField,
-  InputAdornment,
-  Typography,
-  Divider,
-  FormControl,
-  InputLabel,
-  Input
 } from "@material-ui/core";
-import {
-  ArrowForward,
-  ArrowBack,
-  KeyboardArrowLeft,
-  KeyboardArrowRight,
-  Search
-} from "@material-ui/icons";
+
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
 import PaginationComponent from "../../../components/PaginationComponent";
@@ -34,7 +16,7 @@ const PokemonList = () => {
   const { pokemonList } = useSelector(state => state.pokemonSlice);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(12);
+  const [limit] = useState(20);
 
   useEffect(() => {
     dispatch(pokemonSliceActions.loadPokemonList(null));

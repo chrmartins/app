@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { pokemonApi } from "../../helpers/api.helper";
-import config from "../../config";
 
 const berrySlice = createSlice({
   name: "berrySlice",

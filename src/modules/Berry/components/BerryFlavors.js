@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { Grid, LinearProgress, Typography } from "@material-ui/core";
-import TitleComponent from "../../../components/TitleComponent";
+
 
 const BerryFlavors = ({ berryName }) => {
-  const { berryList, berryDetail } = useSelector(state => state.berrySlice);
+  const { berryDetail } = useSelector(state => state.berrySlice);
   const berry = berryDetail[berryName];
 
   if (!berry) {

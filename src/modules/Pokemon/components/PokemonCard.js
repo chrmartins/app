@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import {
   Grid,
   Card,
-  CardHeader,
-  Avatar,
   CardActions,
-  LinearProgress,
   Button,
   CardContent
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import { pokemonSliceActions } from "../pokemon.slice";
 import { pokemonUrls } from "../Pokemon.router";
 import Pokemon from "./Pokemon";
 

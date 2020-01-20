@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import routeHelper from "../../helpers/Route.helper";
 import BerryPage from "./BerryPage";
 import BerryProvider from "./BerryProvider";

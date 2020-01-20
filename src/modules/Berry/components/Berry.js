@@ -1,7 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Grid, LinearProgress, Typography } from "@material-ui/core";
-import TitleComponent from "../../../components/TitleComponent";
+import { Grid, Typography } from "@material-ui/core";
 import BerryFlavors from "./BerryFlavors";
 
 const Berry = ({ berryName }) => {

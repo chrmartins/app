@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import routeHelper from "../../helpers/Route.helper";
 import PokemonPage from "../Pokemon/PokemonPage";
 import PokemonDetailPage from "./PokemonDetailPage";

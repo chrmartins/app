@@ -1,8 +1,6 @@
 import React from "react";
-import { Grid, Button, LinearProgress, MobileStepper } from "@material-ui/core";
+import { Grid, Button, MobileStepper } from "@material-ui/core";
 import {
-  ArrowForward,
-  ArrowBack,
   KeyboardArrowLeft,
   KeyboardArrowRight
 } from "@material-ui/icons";

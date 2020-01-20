@@ -1,9 +1,7 @@
-import React, { useEffect, Fragment } from "react";
+import React from "react";
 import PokemonCard from "./PokemonCard";
-import { Grid, Button, LinearProgress, Typography } from "@material-ui/core";
-import { ArrowForward, ArrowBack } from "@material-ui/icons";
+import { Grid, LinearProgress, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { pokemonSliceActions } from "../pokemon.slice";
 
 const PokemonEvolutions = ({ pokemonName }) => {
   const dispatch = useDispatch();

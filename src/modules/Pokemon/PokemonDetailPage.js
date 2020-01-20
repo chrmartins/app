@@ -19,7 +19,6 @@ const PokemonDetailPage = () => {
   if (!pokemon) {
     return <LinearProgress />;
   }
-  console.log("!!! pokemon", pokemon);
 
   return (
     <Grid container justify="center" spacing={1}>

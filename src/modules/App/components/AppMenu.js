@@ -1,6 +1,5 @@
 import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import { Android, Apple } from "@material-ui/icons";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import { pokemonUrls } from "../../Pokemon/Pokemon.router";
