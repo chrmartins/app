@@ -9,8 +9,8 @@ Lista de pokemons
 # ToDo's
 
 - [ ] Colocar alguns detalhes do pokemon nos detalhes
-- [ ] Listagem de berries com filtro por sabor
 - [ ] Deixar layout mais Clean
+- [x] Listagem de berries com filtro por sabor
 - [x] Ter uma listagem de Pokemon
 - [x] Com cards que mostram nome e foto
 - [x] Você pode lidar com paginação como preferir
