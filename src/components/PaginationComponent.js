@@ -1,9 +1,6 @@
 import React from "react";
 import { Grid, Button, MobileStepper } from "@material-ui/core";
-import {
-  KeyboardArrowLeft,
-  KeyboardArrowRight
-} from "@material-ui/icons";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const PaginationComponent = ({
   totalPages,

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
-import {
-  Grid,
-  LinearProgress,
-} from "@material-ui/core";
+import { Grid, LinearProgress } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
 import { pokemonSliceActions } from "../pokemon.slice";
@@ -29,11 +26,26 @@ const PokemonList = () => {
   if (!pokemonList) {
     return <LinearProgress />;
   }
+
+  // Filtra os pokemons de acordo com o texto digitado no campo de busca
   const pokemonListFiltered = pokemonList.filter(
     pokemon => pokemon.name.indexOf(searchText) >= 0
   );
+
+  // pega o total de páginas dividinto o total de pokemons pela quantidade que é mostrado na página
   const totalPages = pokemonListFiltered.length / limit;
-  const pokemonListPaginated = pokemonListFiltered.slice(page, page + limit);
+
+  // Pega um pedaço da lista de pokemons de acordo com o total por página e a pagina atual
+  // slice(posicaoAtual, posicaoFinal)
+  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // arr.slice(2, 6);
+  // limit = 20
+  // DRY - Don´t Reapeat Yourself
+  const offset = page * limit;
+  const pokemonListPaginated = pokemonListFiltered.slice(
+    offset,
+    offset + limit
+  );
 
   const handleNext = () => {
     setPage(page + 1);
