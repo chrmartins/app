@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import { configureStore } from "@reduxjs/toolkit";
-import asyncDispatchMiddleware from "./asyncDispatchMiddleware";
 import readyStatePromiseMiddleware from "./readyStatePromiseMiddleware";
 import reducers from "./reducers";
 
@@ -12,11 +11,7 @@ const loggerMiddleware = createLogger({ predicate: () => SHOW_LOGS });
 
 const reducer = combineReducers(reducers);
 
-const middleware = [
-  loggerMiddleware,
-  readyStatePromiseMiddleware,
-  asyncDispatchMiddleware
-];
+const middleware = [loggerMiddleware, readyStatePromiseMiddleware];
 
 let storeHelper = configureStore({
   middleware,

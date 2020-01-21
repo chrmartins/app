@@ -4,11 +4,13 @@ Lista de pokemons
 
 # Como Rodar
 
-- `yarn start`
+- `yarn` Instala dependências
+- `yarn start` Inicia o projeto em modo de desenvolvimento
 
 # ToDo's
 
-- [ ] Colocar alguns detalhes do pokemon nos detalhes
+- [ ] Colocar mais detalhes do pokemon nos detalhes
+- [x] Colocar a experência no detalhe do pokemon
 - [x] Deixar layout mais Clean
 - [x] Listagem de berries com filtro por sabor
 - [x] Ter uma listagem de Pokemon
@@ -19,7 +21,3 @@ Lista de pokemons
 - [x] Filtrar na lista de pokemon por nome
 - [x] Criar estrutura de menu e cabeçalho
 - [ ] BUG: ao iniciar o PokemonDetailPage ele faz muitos renderers
-
-# Dúvidas
-
-- [ ]

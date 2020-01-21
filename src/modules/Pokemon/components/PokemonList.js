@@ -13,7 +13,7 @@ const PokemonList = () => {
   const { pokemonList } = useSelector(state => state.pokemonSlice);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(0);
-  const [limit] = useState(20);
+  const [limit] = useState(12);
 
   useEffect(() => {
     dispatch(pokemonSliceActions.loadPokemonList(null));
@@ -35,12 +35,6 @@ const PokemonList = () => {
   // pega o total de páginas dividinto o total de pokemons pela quantidade que é mostrado na página
   const totalPages = pokemonListFiltered.length / limit;
 
-  // Pega um pedaço da lista de pokemons de acordo com o total por página e a pagina atual
-  // slice(posicaoAtual, posicaoFinal)
-  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  // arr.slice(2, 6);
-  // limit = 20
-  // DRY - Don´t Reapeat Yourself
   const offset = page * limit;
   const pokemonListPaginated = pokemonListFiltered.slice(
     offset,

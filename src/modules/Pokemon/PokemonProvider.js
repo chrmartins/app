@@ -25,8 +25,16 @@ const PokemonProvider = ({ children }) => {
     }
   }, [evolutionList]);
 
+  /**
+  Como não foi achado o id do pokemon que é utilizado para buscar as evoluções
+  De alguma forma o ID que está na documentação da Evolução é diferente do que aparece
+  no detalhamento do Pokemon
+  Foi buscado todas de uma vez o que acabou gerando uma sobre carga
+  O ideal é tentar achar na API ou caso não exista utilizar algum cache, ex.: localStorage
+   */
   const percent = Math.round((evolutionDetailTotal * 100) / evolutionTotal);
-  if (evolutionDetailTotal < evolutionTotal) {
+  const evolutionsDetailIsReady = evolutionDetailTotal < evolutionTotal;
+  if (evolutionsDetailIsReady) {
     return (
       <Grid container>
         <Grid item xs={12}>
